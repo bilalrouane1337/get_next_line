@@ -6,7 +6,7 @@
 /*   By: brouane <brouane@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:47:30 by brouane           #+#    #+#             */
-/*   Updated: 2025/11/19 23:24:48 by brouane          ###   ########.fr       */
+/*   Updated: 2025/11/19 23:41:04 by brouane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,8 @@ char *get_next_line(int fd)
     if (fd < 0 || BUFFER_SIZE <= 0)
         return (NULL);
     if(!working_line)
-        working_line = (char*)malloc(BUFFER_SIZE + 1);
-    if (!working_line)
-        return (NULL);
+        if (!(working_line = (char*)malloc(BUFFER_SIZE + 1)))
+            return (NULL);
     working_line = ft_fill_line(working_line, fd);
     next_line = ft_get_next_line(working_line);
     working_line = ft_get_crop_line(working_line);
