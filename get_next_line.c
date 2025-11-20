@@ -6,7 +6,7 @@
 /*   By: brouane <brouane@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:47:30 by brouane           #+#    #+#             */
-/*   Updated: 2025/11/19 23:41:04 by brouane          ###   ########.fr       */
+/*   Updated: 2025/11/20 19:38:06 by brouane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,26 @@ char *ft_get_next_line(char *working_line)
 {
     char* next_line;
     int i;
-    int j;
 
     i = 0;
+    if (!working_line[i])
+		return (NULL);
     while (working_line[i] && working_line[i] != '\n')
         i++;
     next_line = (char*)malloc(i + 2);
-    j = 0;
-    while (j <= i)
+    if (!next_line)
+		return (NULL);
+    i = 0;
+    while (working_line[i] && working_line[i] != '\n')
     {
-        next_line[j] = working_line[j];
-        j++;
+        next_line[i] = working_line[i];
+        i++;
     }
+    if (working_line[i] == '\n')
+	{
+		next_line[i] = working_line[i];
+		i++;
+	}
     next_line[i] = '\0';
     return (next_line);
 }
@@ -71,11 +79,13 @@ char *get_next_line(int fd)
     if(!working_line)
         if (!(working_line = (char*)malloc(BUFFER_SIZE + 1)))
             return (NULL);
+            
+    printf("HHHHH:%s|\n", working_line);
     working_line = ft_fill_line(working_line, fd);
+    printf("TTTTT:%s|\n", working_line);
+    
     next_line = ft_get_next_line(working_line);
     working_line = ft_get_crop_line(working_line);
-    // printf("%s\n", working_line);
-    // printf("ffff\n");
     return(next_line);
 }
 
@@ -83,23 +93,23 @@ int main()
 {
     int fd = open("text.txt", O_RDONLY);
 
-    char *holder = get_next_line(fd);
-    printf("%s\n", holder);
+    // char *holder = get_next_line(fd);
+    // printf("%s\n", holder);
 
-    holder = get_next_line(fd);
-    printf("%s\n", holder);
+    // holder = get_next_line(fd);
+    // printf("%s\n", holder);
 
-    holder = get_next_line(fd);
-    printf("%s\n", holder);
+    // holder = get_next_line(fd);
+    // printf("%s\n", holder);
 
-    holder = get_next_line(fd);
-    printf("%s\n", holder);
+    // holder = get_next_line(fd);
+    // printf("%s\n", holder);
   
-    // char *holder;
-    // while ((holder = get_next_line(fd)) != NULL)
-    // {
-    //     printf("%s\n", holder);
-    // }
+    char *holder;
+    while ((holder = get_next_line(fd)) != NULL)
+    {
+        printf("%s\n", holder);
+    }
 
     close(fd);
 }

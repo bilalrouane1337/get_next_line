@@ -6,7 +6,7 @@
 /*   By: brouane <brouane@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:48:59 by brouane           #+#    #+#             */
-/*   Updated: 2025/11/19 21:47:23 by brouane          ###   ########.fr       */
+/*   Updated: 2025/11/20 19:39:53 by brouane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 
 
-#define BUFFER_SIZE 17
+#define BUFFER_SIZE 20
 
 size_t	ft_strlen(const char *s);
 
