@@ -1,3 +1,0 @@
-#ifndef BUFFER_SIZE 
-#define BUFFER_SIZE 9999 
-#endif
