@@ -6,7 +6,7 @@
 /*   By: brouane <brouane@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:47:30 by brouane           #+#    #+#             */
-/*   Updated: 2025/11/21 16:28:10 by brouane          ###   ########.fr       */
+/*   Updated: 2025/11/21 18:40:15 by brouane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,27 +132,3 @@ char *get_next_line(int fd)
     return(next_line);
 }
 
-int main()
-{
-    int fd = open("text.txt", O_RDONLY);
-
-    // char *holder = get_next_line(fd);
-    // printf("%s\n", holder);
-
-    // holder = get_next_line(fd);
-    // printf("%s\n", holder);
-
-    // holder = get_next_line(fd);
-    // printf("%s\n", holder);
-
-    // holder = get_next_line(fd);
-    // printf("%s\n", holder);
-  
-    char *holder;
-    while ((holder = get_next_line(fd)) != NULL)
-    {
-        printf("%s\n", holder);
-    }
-
-    close(fd);
-}
