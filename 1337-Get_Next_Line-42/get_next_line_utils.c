@@ -47,10 +47,10 @@ char	*ft_strjoin(char *line, char *buff)
 	if (str == NULL)
 		return (NULL);
 	i = -1;
-	j = 0;
 	if (line)
 		while (line[++i] != '\0')
 			str[i] = line[i];
+	j = 0;
 	while (buff[j] != '\0')
 		str[i++] = buff[j++];
 	str[ft_strlen(line) + ft_strlen(buff)] = '\0';

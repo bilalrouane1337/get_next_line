@@ -11,16 +11,19 @@ char	*ft_get_line(int fd, char *line)
 	read_bytes = 1;
 	while (!ft_strchr(line, '\n') && read_bytes > 0)
 	{
-		printf("@");
+		// printf("@");
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
+		printf("%d\n", read_bytes);
 		if (read_bytes == -1)
 		{
 			free(buffer);
 			return (NULL);
 		}
 		buffer[read_bytes] = '\0';
-		printf("#\n");
+		printf("d:%s\n", buffer);
+		// printf("#\n");
 		line = ft_strjoin(line, buffer);
+		// printf("@%s@\n", line);
 	}
 	free(buffer);
 	return (line);
@@ -89,6 +92,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 
 	line = ft_get_line(fd, line);
+	
 	if (!line)
 		return (NULL);
 
@@ -101,27 +105,27 @@ char	*get_next_line(int fd)
 	return (next_line);
 }
 
-// int main()
-// {
-//     int fd = open("text.txt", O_RDONLY);
+int main()
+{
+    int fd = open("text.txt", O_RDONLY);
+ 
+    // char *holder = get_next_line(fd);
+    // printf("%s\n", holder);
 
-//     // char *holder = get_next_line(fd);
-//     // printf("%s\n", holder);
+    // holder = get_next_line(fd);
+    // printf("%s\n", holder);
 
-//     // holder = get_next_line(fd);
-//     // printf("%s\n", holder);
+    // holder = get_next_line(fd);
+    // printf("%s\n", holder);
 
-//     // holder = get_next_line(fd);
-//     // printf("%s\n", holder);
-
-//     // holder = get_next_line(fd);
-//     // printf("%s\n", holder);
+    // holder = get_next_line(fd);
+    // printf("%s\n", holder);
   
-//     char *holder;
-//     while ((holder = get_next_line(fd)) != NULL)
-//     {
-//         printf("%s\n------------\n", holder);
-//     }
+    char *holder;
+    while ((holder = get_next_line(fd)) != NULL)
+    {
+        printf("%s\n", holder);
+    }
 
-//     close(fd);
-// }
+    close(fd);
+}

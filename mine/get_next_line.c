@@ -6,7 +6,7 @@
 /*   By: brouane <brouane@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:47:30 by brouane           #+#    #+#             */
-/*   Updated: 2025/11/20 23:23:50 by brouane          ###   ########.fr       */
+/*   Updated: 2025/11/21 16:28:10 by brouane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,14 @@ char *ft_fill_line(char *working_line, int fd)
 	if (!buffer)
 		return (NULL);
     read_bytes = 1;
-    printf("read_bytes: %d\n", read_bytes);
+    // printf("read_bytes: %d\n", read_bytes);
 
 	while (!ft_strchr(working_line, '\n') && read_bytes > 0)
 	{
-        printf("read_bytes after: %d\n", read_bytes);
+        // printf("read_bytes after: %d\n", read_bytes);
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
-        printf("read_bytes after after: %d\n", read_bytes);
+        printf("f: %s\n", buffer);
+        // printf("read_bytes after after: %d\n", read_bytes);
 		if (read_bytes == -1)
 		{
 			free(buffer);
@@ -113,7 +114,7 @@ char *get_next_line(int fd)
     // if(!working_line && bool)
     // {
     //     printf("@");
-    //     if (!(working_line = (char*)malloc(BUFFER_SIZE + 1)))
+    //     if (!(working_line = (char*)malloc(BUFFER_SIZEe + 1)))
     //     return (NULL);
     //     bool = 0;
     //     printf("#\n");
@@ -131,27 +132,27 @@ char *get_next_line(int fd)
     return(next_line);
 }
 
-// int main()
-// {
-//     int fd = open("text.txt", O_RDONLY);
+int main()
+{
+    int fd = open("text.txt", O_RDONLY);
 
-//     // char *holder = get_next_line(fd);
-//     // printf("%s\n", holder);
+    // char *holder = get_next_line(fd);
+    // printf("%s\n", holder);
 
-//     // holder = get_next_line(fd);
-//     // printf("%s\n", holder);
+    // holder = get_next_line(fd);
+    // printf("%s\n", holder);
 
-//     // holder = get_next_line(fd);
-//     // printf("%s\n", holder);
+    // holder = get_next_line(fd);
+    // printf("%s\n", holder);
 
-//     // holder = get_next_line(fd);
-//     // printf("%s\n", holder);
+    // holder = get_next_line(fd);
+    // printf("%s\n", holder);
   
-//     char *holder;
-//     while ((holder = get_next_line(fd)) != NULL)
-//     {
-//         printf("%s------------", holder);
-//     }
+    char *holder;
+    while ((holder = get_next_line(fd)) != NULL)
+    {
+        printf("%s\n", holder);
+    }
 
-//     close(fd);
-// }
+    close(fd);
+}

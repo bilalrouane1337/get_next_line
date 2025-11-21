@@ -6,7 +6,7 @@
 /*   By: brouane <brouane@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 17:48:59 by brouane           #+#    #+#             */
-/*   Updated: 2025/11/20 21:20:39 by brouane          ###   ########.fr       */
+/*   Updated: 2025/11/21 16:26:02 by brouane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-
+#ifndef BUFFER_SIZE 
+#define BUFFER_SIZE 3
+#endif
 
 #include <stdio.h>
 
-#ifndef BUFFER_SIZE 
-#define BUFFER_SIZE 20  
-#endif
+
 
 char *ft_fill_line(char *working_line, int fd);
 char *ft_get_next_line(char *working_line);
